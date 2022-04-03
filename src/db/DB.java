@@ -21,8 +21,8 @@ public class DB {
 			} catch (SQLException e) {
 				throw new DBException(e.getMessage());
 			}
-			return conn;
 		}
+		return conn;
 	}
 
 	private static Properties loadProperties() {
