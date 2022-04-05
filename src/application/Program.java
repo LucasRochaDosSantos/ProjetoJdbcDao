@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.dao.DaoFactory;
+import model.dao.DepartmentDao;
 import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
@@ -11,6 +12,7 @@ import model.entities.Seller;
 public class Program {
 	public static void main(String[] args) {
        SellerDao sellerDao = DaoFactory.createSellerDao();
+       DepartmentDao dpDao = DaoFactory.createDepartmentDao();
        
        Seller seller = sellerDao.findById(1);
        System.out.println(" ==== TEST 1: Seller FindById =====");
@@ -43,5 +45,27 @@ public class Program {
        System.out.println("\n==== TEST 6: Seller Delete =====");
        sellerDao.deleteById(9);
        System.out.println("Delete Completed");
+       
+       Department dp = dpDao.findById(1);
+       System.out.println("\n ==== TEST 7: Department FindById =====");
+       System.out.println(dp);
+       
+       System.out.println("\n==== TEST 8: Department FindAll ===== ");
+     
+       List<Department>listaD = dpDao.findAll();
+       for(Department dpX : listaD) {
+    	   System.out.println(dpX);
+       }
+       
+       System.out.println("\n===== TEST: 9 Department INSERT");
+       Department depp01 = new Department(null, "Food and Drinks");
+       dpDao.insert(depp01);
+       System.out.println(depp01.getId());
+       
+       System.out.println("\n===== TEST: 10 Department Update");
+       depp01.setName("Softwares");
+       dpDao.update(depp01);
+       System.out.println("Update Completed");
+       
 	}
 }
