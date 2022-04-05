@@ -39,5 +39,9 @@ public class Program {
        se.setName("Pedro Rocha");
        sellerDao.update(se);
        System.out.println("Update Completed");
+       
+       System.out.println("\n==== TEST 6: Seller Delete =====");
+       sellerDao.deleteById(9);
+       System.out.println("Delete Completed");
 	}
 }
